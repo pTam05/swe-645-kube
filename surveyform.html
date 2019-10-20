@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- Name: ptamhank
+	This is the homepage for SWE 645. -->
+<html>
+<title>SWE 645 HOMEPAGE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+/* setting font for text*/
+body, h1 {
+	font-family: "Raleway", sans-serif
+}
+
+body, html {
+	height: 100%
+}
+
+/* setting background image */
+.bgimg {
+	background-image:
+		url('https://www.w3schools.com/w3images/forestbridge.jpg');
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+body {
+	margin: 0
+}
+
+.display-container {
+	position: relative
+}
+
+.display-topleft {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.display-topmiddle {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translate(-50%, 0%);
+	-ms-transform: translate(-50%, 0%)
+}
+
+.padding-large {
+	padding: 12px 24px !important
+}
+
+.center {
+	text-align: center;
+}
+
+.xlarge {
+	font-size: 24px !important
+}
+
+.text-white {
+	color: #fff !important
+}
+
+.display-middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn {
+	border: none;
+	display: inline-block;
+	padding: 8px 16px;
+	vertical-align: middle;
+	overflow: hidden;
+	text-decoration: underline;
+	color: inherit;
+	background-color: inherit;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px
+}
+
+.btn:disabled {
+	cursor: not-allowed;
+}
+</style>
+
+<body>
+	<div class="bgimg display-container text-white">
+		<div class="display-topleft padding-large xlarge">Parnavi
+			Tamhankar</div>
+
+		<div class="display-middle">
+			<h1 class="center">SWE 645 HOMEPAGE</h1>
+			<hr style="margin: auto; width: 35%">
+			<p class="center">I expect the SWE 657 class will help me gain in
+				depth knowledge about concepts and engineering principles of
+				software component and component-based software systems. I hope I
+				will be able to create large-scale component-based Web applications
+				by the end of this course. I am hoping to become proficient at AWS
+				as well.</p>
+			<br /> <br />
+			<div class="center">
+				<button
+					onclick="window.location.href = 'http://3.81.231.151/surveyform/';"
+					class="btn">Assignment 1</button>
+				<button class="btn" disabled>Assignment 2</button>
+				<button class="btn" disabled>Assignment 3</button>
+				<button class="btn" disabled>Assignment 4</button>
+				<button class="btn" disabled>Assignment 5</button>
+			</div>
+		</div>
+	</div>
+</body>
