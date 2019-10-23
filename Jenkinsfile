@@ -4,7 +4,7 @@ pipeline {
 		DOCKER_CREDS = credentials('dockerHubId')
 	}
     stages {
-		
+	def img
         stage('BuildWAR') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
             steps {
