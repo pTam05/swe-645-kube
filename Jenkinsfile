@@ -17,7 +17,7 @@ pipeline {
 		stage("BuildImage") {
 			steps {
 				echo "Creating docker image and pusing to docker hub ..."
-				echo 'which docker'
+				sh 'which docker'
 				sh 'docker build -f Dockerfile -t parnavi/survey-form-jenkins:latest'
 			}
 		}
