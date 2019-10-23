@@ -6,6 +6,7 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
+		    		sh 'cd src/'
 				sh 'jar -cvf surveyform.war * '
 				sh 'ls -lrt'
             }
