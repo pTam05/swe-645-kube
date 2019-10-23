@@ -1,9 +1,15 @@
 pipeline {
 	agent any
 	environment {
-		DOCKER_CREDS = credentials('dockerHubId')
+		DOCKER_CREDS = credentials('dockerHubId)
 	}
     stages {
+	
+		 stage('Initialize'){
+			def dockerHome = tool 'myDocker'
+			env.PATH = "${dockerHome}/bin:${env.PATH}"
+		}
+	
         stage('BuildWAR') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
             steps {
@@ -14,19 +20,13 @@ pipeline {
             }
         }
 		
-		stage("BuildImage") {
+		stage("BuildPublishImage"){
 			steps {
-				echo "Creating docker image and pusing to docker hub ..."
-				sh 'which docker'
-				sh 'docker build -f Dockerfile -t parnavi/survey-form-jenkins:latest'
-			}
-		}
-	    
-		
-		stage("PublishImage"){
-			steps {
-				withDockerRegistry([credentialsId: "$DOCKER_CREDS", url:""]) {
-						sh 'docker push parnavi/survey-form-jenkins:latest'
+				// This step should not normally be used in your script. Consult the inline help for details.
+				withDockerRegistry(credentialsId: 'dockerHubId', toolName: 'docker') {
+					echo "Creating docker image and pusing to docker hub ..."
+					sh 'docker build -f Dockerfile -t parnavi/survey-form-jenkins:latest'
+					sh 'docker push parnavi/survey-form-jenkins:latest'
 				}
 			}
 		}
