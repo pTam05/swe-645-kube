@@ -17,12 +17,15 @@ pipeline {
 		
 		stage("BuildPublishImage"){
 			steps {
+				
+				img = docker.build 'parnavi/survey-form-jenkins'
+				sh 'docker image -a'
 				// This step should not normally be used in your script. Consult the inline help for details.
-				withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
-					echo "Creating docker image and pusing to docker hub ..."
-					img = docker.build 'parnavi/survey-form-jenkins'
-					img.push 'latest'
-				}
+				//withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
+				//	echo "Creating docker image and pusing to docker hub ..."
+					
+				//	img.push 'latest'
+				//}
 			}
 		}
 	}
