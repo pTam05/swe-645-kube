@@ -4,13 +4,6 @@ pipeline {
 		DOCKER_CREDS = credentials('dockerHubId')
 	}
     stages {
-	
-		 stage('Initialize'){
-			steps {
-				def dockerHome = tool 'docker'
-				env.PATH = "${dockerHome}/bin:${env.PATH}"
-			}
-		}
 		
         stage('BuildWAR') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
@@ -25,10 +18,10 @@ pipeline {
 		stage("BuildPublishImage"){
 			steps {
 				// This step should not normally be used in your script. Consult the inline help for details.
-				withDockerRegistry(credentialsId: 'dockerHubId', toolName: 'docker') {
+				withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
 					echo "Creating docker image and pusing to docker hub ..."
-					sh 'docker build -f Dockerfile -t parnavi/survey-form-jenkins:latest'
-					sh 'docker push parnavi/survey-form-jenkins:latest'
+					img = docker.build 'parnavi/survey-form-jenkins'
+					img.push 'latest'
 				}
 			}
 		}
