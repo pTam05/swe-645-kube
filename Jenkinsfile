@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker {image  'openjdk' }	}
+	agent any
     stages {
         stage('build') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
