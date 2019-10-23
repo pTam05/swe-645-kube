@@ -1,5 +1,4 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
     stages {
         stage('build') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
@@ -9,7 +8,7 @@ pipeline {
 				sh 'java -version'
 				sh 'jar -cvf surveyform.war * '
 				sh 'ls -lrt'
-            }
+	    }
         }
-		
+   }
 }
