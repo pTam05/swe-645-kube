@@ -4,7 +4,7 @@ pipeline {
 		DOCKER_CREDS = credentials('dockerHubId')
 	}
     stages {
-	def img
+	
         stage('BuildWAR') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
             steps {
@@ -14,12 +14,11 @@ pipeline {
 				sh 'ls -lrt'
             }
         }
-		
+		def img
 		stage("BuildPublishImage"){
 			steps {
 				
-				img = docker.build 'parnavi/survey-form-jenkins'
-				sh 'docker image -a'
+				img = docker.build 'parnavi/survey-form-jenkins:latest'
 				// This step should not normally be used in your script. Consult the inline help for details.
 				//withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
 				//	echo "Creating docker image and pusing to docker hub ..."
