@@ -3,14 +3,15 @@ pipeline {
 	environment {
 		DOCKER_CREDS = credentials('dockerHubId')
 	}
+    stages {
+	
 		 stage('Initialize'){
 			steps {
 				def dockerHome = tool 'docker'
 				env.PATH = "${dockerHome}/bin:${env.PATH}"
 			}
 		}
-	
-	
+		
         stage('BuildWAR') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
             steps {
