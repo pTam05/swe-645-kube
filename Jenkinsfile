@@ -18,13 +18,14 @@ pipeline {
 		
 		stage("BuildPublishImage"){
 			steps {
-				
-				img = docker.build 'parnavi/survey-form-jenkins:latest'
-			
-				withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
-					echo "Creating docker image and pusing to docker hub ..."
-					
-					img.push 'latest'
+				script {
+					img = docker.build 'parnavi/survey-form-jenkins:latest'
+
+					withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
+						echo "Creating docker image and pusing to docker hub ..."
+
+						img.push 'latest'
+					}
 				}
 			}
 		}
