@@ -1,5 +1,5 @@
 pipeline {
-	agent { docker {image  'openjdk:8-jre' }	}
+	agent { docker {image  'openjdk' }	}
     stages {
         stage('build') {
 			//Consider modifying this to use Kubernetes pod instead of doceker image
