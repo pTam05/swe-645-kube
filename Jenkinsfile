@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				
 				img = docker.build 'parnavi/survey-form-jenkins:latest'
-				// This step should not normally be used in your script. Consult the inline help for details.
+			
 				//withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
 				//	echo "Creating docker image and pusing to docker hub ..."
 					
