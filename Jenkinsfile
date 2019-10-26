@@ -21,7 +21,7 @@ pipeline {
 				script {
 					img = docker.build 'parnavi/survey-form-jenkins:latest'
 
-					withDockerRegistry(credentialsId: 'dockerHubId', url: '') {
+					withDockerRegistry(credentialsId: 'docker', url: '') {
 						echo "Creating docker image and pusing to docker hub ..."
 
 						img.push 'latest'
