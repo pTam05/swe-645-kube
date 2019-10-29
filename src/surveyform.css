@@ -1,23 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap');
 
-/* Name: ptamhank
-	This is the css file for the student survey form. */
-@import
-	url('https://fonts.googleapis.com/css?family=Saira+Stencil+One&display=swap')
-	;
-
-/* Setting background color*/
 body {
-	background-color: #EEF1FE;
+	background-color: #c7dff0;
 	font-family: "Raleway", sans-serif
 }
 
-/* Setting blue color border for heading*/
 h1 {
 	border-style: solid;
 	border-color: #354775;
 	border-width: 5px;
 	border-radius: 5px;
+	width: 80%;
+}
+
+table {
 	width: 80%;
 }
 
@@ -46,23 +43,20 @@ td {
 	#survey input[type="date"], #survey textarea, #survey select {
 	width: 95%;
 	border: 1px solid #CCC;
-	border-radius: 5px;
 	background: #FFF;
 	margin: 0 0 5px;
 	padding: 10px;
 }
 
-/* Setting blue color border for table*/
 table {
 	border-style: solid;
 	border-color: #354775;
 	border-width: 5px;
 	border-radius: 5px;
-	font-family: "Raleway", sans-serif;
-	width: 80%;
+	font-family: "Raleway", sans-serif
 }
 
-#survey button[type="submit"] {
+#survey button[type="submit"], #survey button[type="reset"] {
 	cursor: pointer;
 	width: 30%;
 	border: none;
