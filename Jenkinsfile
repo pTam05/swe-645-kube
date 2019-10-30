@@ -13,18 +13,20 @@ pipeline {
 				sh 'java -version'
 				sh 'jar -cvf surveyform.war src/surveyform.css src/surveyform.html'
 				sh 'ls -lrt'
+				sh 'jar -tvf surveyform.war'
             }
         }
 		
 		stage("BuildPublishImage"){
 			steps {
 				script {
-					img = docker.build 'parnavi/survey-form-jenkins:latest'
+					echo "${env.BUILD_ID}"
+					img = docker.build "parnavi/survey-form-image-gcp:${env.BUILD_ID}"
 
 					withDockerRegistry(credentialsId: 'docker', url: '') {
 						echo "Creating docker image and pusing to docker hub ..."
 
-						img.push 'latest'
+						img.push "${env.BUILD_ID}"
 					}
 				}
 			}
