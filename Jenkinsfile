@@ -31,5 +31,14 @@ pipeline {
 				}
 			}
 		}
+
+		stage("UpdateDeployment") {
+			steps{
+				script{
+					echo "Updating Deployment"
+					sh "kubectl config view"
+				}
+			}
+		}
 	}
 }
