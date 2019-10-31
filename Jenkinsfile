@@ -38,7 +38,7 @@ pipeline {
 					echo "Updating Deployment"
 					sh "kubectl config view"
 					
-					withKubeConfig([credentialsId:'creds-kube-config', serverUrl: 'https://35.199.47.233']) {
+					withKubeConfig([credentialsId:'kube-creds-jenkins', serverUrl: 'https://35.199.47.233']) {
 						sh "kubectl config view"
 						sh "kubectl get deployments"
 					}
