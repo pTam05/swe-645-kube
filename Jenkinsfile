@@ -37,7 +37,7 @@ pipeline {
 				sh 'gcloud container clusters get-credentials kube-cluster --zone us-east4-a'
 				sh 'kubectl config view'
 				sh "kubectl get deployments"
-					
+				kubernetesDeploy(configs:'deploymentfile.yml', enableConfigSubstitution: true)	
 			}
 			
 			
