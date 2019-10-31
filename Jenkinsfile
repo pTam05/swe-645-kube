@@ -21,7 +21,7 @@ pipeline {
 			steps {
 				script {
 					echo "${env.BUILD_ID}"
-					img = docker.build "DOCKER_IMAGE_NAME:${env.BUILD_ID}"
+					img = docker.build(DOCKER_IMAGE_NAME)
 
 					withDockerRegistry(credentialsId: 'docker', url: '') {
 						echo "Creating docker image and pusing to docker hub ..."
