@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				script {
 					echo "${env.BUILD_ID}"
-					img = docker.build(DOCKER_IMAGE_NAME)
+					img = docker.build "parnavi/survey-form-image-gcp:${env.BUILD_ID}"
 
 					withDockerRegistry(credentialsId: 'docker', url: '') {
 						echo "Creating docker image and pusing to docker hub ..."
