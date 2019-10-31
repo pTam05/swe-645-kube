@@ -40,7 +40,7 @@ pipeline {
 					
 					withKubeConfig([credentialsId:'jenkins-deployer-creds', serverUrl: 'https://35.199.47.233']) {
 						sh "kubectl config view"
-						sh "sudo kubectl get deployments"
+						sh "kubectl get deployments"
 					}
 				}
 			}
