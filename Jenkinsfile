@@ -11,9 +11,9 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
+				sh 'cd src'
 				sh 'jar -cvf surveyform.war *'
-				sh 'ls -lrt'
-				sh 'jar -tvf surveyform.war'
+				sh 'cp surveyform.war ..'
             }
         }
 		
@@ -37,9 +37,8 @@ pipeline {
 				sh 'gcloud container clusters get-credentials kube-cluster --zone us-east4-a'
 				sh 'kubectl config view'
 				sh "kubectl get deployments"
-				sh "kubectl set image deployment/survey-form-gcp *=survey-form-image-gcp:${env.BUILD_ID} --record"
+				sh "kubectl set image deployment/survey-form-gcp survey-form-image-gcp=parnavi/survey-form-image-gcp:${env.BUILD_ID}"
 			}
-			
 			
 		}
 	}
