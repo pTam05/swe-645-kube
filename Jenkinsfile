@@ -36,7 +36,8 @@ pipeline {
 			steps{
 				sh 'gcloud container clusters get-credentials kube-cluster --zone us-east4-a'
 				sh 'kubectl config view'
-				
+				sh "kubectl get deployments"
+					
 			}
 			
 			
