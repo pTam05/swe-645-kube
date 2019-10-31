@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind:Deployment
+metadata:
+	labels:
+		app: survey-form-gcp
+	name: survey-form-gcp
+	namespace:default
+spec:
+	replicas: 1
+	selector:
+		matchLabels:
+			app: survey-form-gcp
+	strategy:
+		rollingUpdate:
+			maxSurge: 25%
+			maxUnavailable: 25%
+		type: RollingUpdate
+	template:
+		metadata:
+			labels:
+				app: survey-form-gcp
+		spec:
+			containers;
+			- image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
+			imagePullPolicy: Always
+			name: $DOCKER_IMAGE_NAME
+		dnsPolicy: ClusterFirst
+		restartPolicy: Always
+		schedulerName: default-scheduler
+		terminationGracePeriodSeconds: 30
