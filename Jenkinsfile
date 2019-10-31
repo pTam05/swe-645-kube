@@ -37,7 +37,7 @@ pipeline {
 				sh 'gcloud container clusters get-credentials kube-cluster --zone us-east4-a'
 				sh 'kubectl config view'
 				sh "kubectl get deployments"
-				kubernetesDeploy(kubeconfigId: 'kube-config-cred',configs:'deploymentfile.yml', enableConfigSubstitution: true)	
+				sh 'kubectl set image deployment/survey-form-gcp *=survey-form-image-gcp:updated --record'
 			}
 			
 			
