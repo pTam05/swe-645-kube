@@ -34,11 +34,8 @@ pipeline {
 
 		stage("UpdateDeployment") {
 			steps{
+				sh 'gcloud'
 				
-				withKubeConfig([credentialsId:'kube-config-cred', serverUrl: 'https://35.199.47.233']) {
-						sh "kubectl config view"
-						sh "kubectl get deployments"
-					}
 			}
 			
 			
