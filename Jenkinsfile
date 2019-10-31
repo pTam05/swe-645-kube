@@ -37,6 +37,10 @@ pipeline {
 				script{
 					echo "Updating Deployment"
 					sh "kubectl config view"
+					
+					withKubeConfig([serverUrl: 'https://35.199.47.233']) {
+						sh "kubectl config view"
+					}
 				}
 			}
 		}
