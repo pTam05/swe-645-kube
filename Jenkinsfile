@@ -40,6 +40,7 @@ pipeline {
 					
 					withKubeConfig([credentialsId:'jenkins-deployer-creds', clusterName:'gke_swe-645-kube_us-east4-a_kube-cluster', serverUrl: 'https://35.199.47.233']) {
 						sh "kubectl config view"
+						sh "kubectl get svc"
 					}
 				}
 			}
