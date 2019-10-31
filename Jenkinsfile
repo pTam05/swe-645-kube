@@ -2,12 +2,12 @@ pipeline {
 	agent any
 	environment {
 		DOCKER_CREDS = credentials('docker')
+		DOCKER_IMAGE_NAME = "parnavi/survey-form-image-gcp"
 		img = ''
 	}
     stages {
 	
         stage('BuildWAR') {
-			//Consider modifying this to use Kubernetes pod instead of doceker image
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
@@ -21,7 +21,7 @@ pipeline {
 			steps {
 				script {
 					echo "${env.BUILD_ID}"
-					img = docker.build "parnavi/survey-form-image-gcp:${env.BUILD_ID}"
+					img = docker.build "DOCKER_IMAGE_NAME:${env.BUILD_ID}"
 
 					withDockerRegistry(credentialsId: 'docker', url: '') {
 						echo "Creating docker image and pusing to docker hub ..."
@@ -34,15 +34,7 @@ pipeline {
 
 		stage("UpdateDeployment") {
 			steps{
-				script{
-					echo "Updating Deployment"
-					sh "kubectl config view"
-					
-					withKubeConfig([credentialsId:'kube-creds-jenkins', serverUrl: 'https://35.199.47.233']) {
-						sh "kubectl config view"
-						sh "kubectl get deployments"
-					}
-				}
+				kubernetesDeploy(kubeconfigId: '', config:''
 			}
 		}
 	}
