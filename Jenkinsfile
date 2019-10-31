@@ -34,7 +34,7 @@ pipeline {
 
 		stage("UpdateDeployment") {
 			steps{
-				kubernetesDeploy(kubeconfigId: 'kube-config-cred', config:'deploymentfile.yml', enableConfigSubstitution: true)
+				kubernetesDeploy(kubeconfigId: 'kube-config-cred', configs:'deploymentfile.yml', enableConfigSubstitution: true)
 			}
 		}
 	}
